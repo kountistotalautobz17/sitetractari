@@ -214,7 +214,6 @@ footer a { color: #FF5C00; text-decoration: none; }
 <section class="hero">
   <h2>Kountis Total Auto</h2>
   <p>Tractări Auto & Transport Marfă<br>România • Bulgaria • Grecia • NON-STOP</p>
-  <!-- 🔔 Căsuță cu numărul care sună la click -->
   <div class="call-wrapper">
     <a href="tel:+40722921675" class="call-btn">☎️ 0722 921 675</a>
   </div>
@@ -253,7 +252,31 @@ footer a { color: #FF5C00; text-decoration: none; }
   <p>© 2025 Kountis Total Auto. Toate drepturile rezervate.</p>
 </footer>
 
+<!-- 🔊 Script care activează sunetul după prima interacțiune -->
+<script>
+  const audio = document.getElementById("bg-audio");
+
+  function enableAudio() {
+    if (!audio) return;
+    if (!audio.muted) return;
+
+    audio.muted = false;
+    audio.volume = 0.25; // volum 25%, să nu fie deranjant
+    audio.play().catch(() => {
+      // unele browsere pot bloca redarea automată
+    });
+  }
+
+  // Prima interacțiune oriunde în pagină
+  document.addEventListener("click", enableAudio, { once: true });
+
+  // Sigur pornim și când apasă pe numărul de telefon din hero (dacă există)
+  const phoneBtn = document.querySelector(".call-btn");
+  if (phoneBtn) {
+    phoneBtn.addEventListener("click", enableAudio);
+  }
+</script>
+<!-- 🔊 /SCRIPT -->
+
 </body>
 </html>
-
-
