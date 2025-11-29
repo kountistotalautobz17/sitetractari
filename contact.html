@@ -313,23 +313,48 @@ footer a {
   </div>
 
   <!-- Coloana dreapta: formular + hartă -->
-  <div class="contact-box">
-    <h3>Trimite-ne un mesaj</h3>
-    <form onsubmit="alert('Mesajul a fost trimis (simulat). Pentru versiunea live, conectează formularul la un backend sau la un serviciu de email.'); return false;">
-      <div>
-        <label for="nume">Nume complet</label>
-        <input type="text" id="nume" name="nume" placeholder="Ex: Ion Popescu" required>
-      </div>
-      <div>
-        <label for="telefon">Telefon</label>
-        <input type="tel" id="telefon" name="telefon" placeholder="Ex: 07xx xxx xxx" required>
-      </div>
-      <div>
-        <label for="detalii">Detalii solicitare</label>
-        <textarea id="detalii" name="detalii" placeholder="Locul preluării, destinația, tipul mașinii / mărfii..." required></textarea>
-      </div>
-      <button type="submit" class="contact-btn">📤 Trimite mesajul</button>
-    </form>
+ <div class="contact-box">
+  <h3>Trimite-ne un mesaj</h3>
+
+  <form id="whatsappForm">
+    <div>
+      <label for="nume">Nume complet</label>
+      <input type="text" id="nume" name="nume" placeholder="Ex: Ion Popescu" required>
+    </div>
+
+    <div>
+      <label for="telefon">Telefon</label>
+      <input type="tel" id="telefon" name="telefon" placeholder="Ex: 07xx xxx xxx" required>
+    </div>
+
+    <div>
+      <label for="detalii">Detalii solicitare</label>
+      <textarea id="detalii" name="detalii" placeholder="Locul preluării, destinația, tipul mașinii / mărfii..." required></textarea>
+    </div>
+
+    <button type="submit" class="contact-btn">📤 Trimite mesajul</button>
+  </form>
+</div>
+
+<script>
+  document.getElementById("whatsappForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const phoneNumber = "40722921675"; // <<–– pune aici numărul tău DE WHATSAPP, fără +
+    const nume = document.getElementById("nume").value;
+    const telefon = document.getElementById("telefon").value;
+    const detalii = document.getElementById("detalii").value;
+
+    const mesaj = `Bună! Sunt ${nume}.
+Telefon: ${telefon}
+Detalii solicitare: ${detalii}`;
+
+    const url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(mesaj);
+
+    window.open(url, "_blank");
+  });
+</script>
+
 
     <div class="map-container">
       <iframe
@@ -363,3 +388,4 @@ footer a {
 
 </body>
 </html>
+
