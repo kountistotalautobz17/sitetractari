@@ -279,6 +279,54 @@ footer a {
   <h2>Contact Kountis Total Auto</h2>
   <p>Suntem disponibili NON-STOP pentru tractări auto și transport marfă în România, Bulgaria și Grecia. Alege metoda de contact care ți se potrivește.</p>
 </section>
+  <style>
+/* 🔥 Căsuță telefon care "sare în ochi" */
+.call-wrapper {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.call-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 999px;
+  background: #FF5C00;
+  color: #fff;
+  font-weight: 800;
+  font-size: clamp(1.1em, 3vw, 1.4em);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 20px rgba(255, 92, 0, 0.9);
+  animation: blinkCall 0.9s infinite alternate;
+  border: 2px solid #fff;
+}
+
+.call-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px rgba(255, 92, 0, 1);
+}
+
+@keyframes blinkCall {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 15px rgba(255, 92, 0, 0.8);
+    background-color: #FF5C00;
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.9);
+    background-color: #ff7b2a;
+  }
+  100% {
+    transform: scale(1.03);
+    box-shadow: 0 0 22px rgba(255, 92, 0, 1);
+    background-color: #FF5C00;
+  }
+}
+</style>
+
 
 <section class="contact-wrapper">
   <!-- Coloana stânga: date contact + acțiuni -->
@@ -388,6 +436,7 @@ Detalii solicitare: ${detalii}`;
 
 </body>
 </html>
+
 
 
 
