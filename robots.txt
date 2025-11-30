@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://kntbuzau-kountistotalauto.ro/sitemap.xml
+Sitemap: https://tractariplatformabuzau.ro/sitemap.xml
+
