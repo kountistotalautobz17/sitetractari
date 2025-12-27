@@ -29,16 +29,7 @@ function gtag_report_conversion(url) {
   return false;
 }
 </script>
-  
-  <script>
-let visits = localStorage.getItem("visits") || 0;
-visits++;
-localStorage.setItem("visits", visits);
 
-if (visits > 2) {
-  document.body.innerHTML = "<h1>You are banned</h1>";
-}
-</script>
 
   
 <meta charset="UTF-8">
@@ -335,6 +326,7 @@ footer a { color: #FF5C00; text-decoration: none; }
 
 </body>
 </html>
+
 
 
 
