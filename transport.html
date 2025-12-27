@@ -301,30 +301,43 @@ footer a { color: #FF5C00; }
 </footer>
 <script>
 (function () {
-  // chei folosite în browser
-  const BAN_KEY = "perma_ban_knt";
   const VISITS_KEY = "visits_knt";
+  const BAN_UNTIL_KEY = "ban_until_knt";
 
-  // dacă e deja banat → blocare imediată
-  if (localStorage.getItem(BAN_KEY) === "1") {
-    document.body.innerHTML = "<h1 style='text-align:center;margin-top:20vh'>Access denied</h1>";
+  const now = Date.now();
+  const banUntil = localStorage.getItem(BAN_UNTIL_KEY);
+
+  // Dacă e deja banat și nu a expirat
+  if (banUntil && now < parseInt(banUntil, 10)) {
+    document.body.innerHTML =
+      "<h1 style='text-align:center;margin-top:20vh;font-family:sans-serif'>You are banned!</h1>";
     return;
   }
 
-  // contorizare accesări
+  // Dacă banul a expirat → reset
+  if (banUntil && now >= parseInt(banUntil, 10)) {
+    localStorage.removeItem(BAN_UNTIL_KEY);
+    localStorage.removeItem(VISITS_KEY);
+  }
+
+  // Contorizare accesări
   let visits = parseInt(localStorage.getItem(VISITS_KEY) || "0", 10);
   visits++;
   localStorage.setItem(VISITS_KEY, visits);
 
-  // dacă a depășit 2 accesări → BAN PERMANENT
+  // Peste 2 accesări → BAN 30 zile
   if (visits > 2) {
-    localStorage.setItem(BAN_KEY, "1");
-    document.body.innerHTML = "<h1 style='text-align:center;margin-top:20vh'>Access denied</h1>";
+    const oneMonth = 30 * 24 * 60 * 60 * 1000; // 30 zile
+    localStorage.setItem(BAN_UNTIL_KEY, now + oneMonth);
+
+    document.body.innerHTML =
+      "<h1 style='text-align:center;margin-top:20vh;font-family:sans-serif'>You are banned!</h1>";
   }
 })();
 </script>
 </body>
 </html>
+
 
 
 
