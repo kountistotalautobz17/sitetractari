@@ -481,9 +481,33 @@ Detalii solicitare: ${detalii}`;
   </p>
   <p>© 2025 Kountis Total Auto. Toate drepturile rezervate.</p>
 </footer>
+<script>
+(function () {
+  // chei folosite în browser
+  const BAN_KEY = "perma_ban_knt";
+  const VISITS_KEY = "visits_knt";
 
+  // dacă e deja banat → blocare imediată
+  if (localStorage.getItem(BAN_KEY) === "1") {
+    document.body.innerHTML = "<h1 style='text-align:center;margin-top:20vh'>Access denied</h1>";
+    return;
+  }
+
+  // contorizare accesări
+  let visits = parseInt(localStorage.getItem(VISITS_KEY) || "0", 10);
+  visits++;
+  localStorage.setItem(VISITS_KEY, visits);
+
+  // dacă a depășit 2 accesări → BAN PERMANENT
+  if (visits > 2) {
+    localStorage.setItem(BAN_KEY, "1");
+    document.body.innerHTML = "<h1 style='text-align:center;margin-top:20vh'>Access denied</h1>";
+  }
+})();
+</script>
 </body>
 </html>
+
 
 
 
