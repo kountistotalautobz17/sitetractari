@@ -303,44 +303,10 @@ footer a {
   <p>📍 Buzău, România • ☎️ <a href="tel:0722921675">0722 921 675</a> • <a href="https://www.facebook.com/share/17opqx3Cfi/" target="_blank">Facebook</a></p>
   <p>© 2025 Kountis Total Auto. Toate drepturile rezervate.</p>
 </footer>
-<script>
-(function () {
-  const VISITS_KEY = "visits_knt";
-  const BAN_UNTIL_KEY = "ban_until_knt";
 
-  const now = Date.now();
-  const banUntil = localStorage.getItem(BAN_UNTIL_KEY);
-
-  // Dacă e deja banat și nu a expirat
-  if (banUntil && now < parseInt(banUntil, 10)) {
-    document.body.innerHTML =
-      "<h1 style='text-align:center;margin-top:20vh;font-family:sans-serif'>You are banned!</h1>";
-    return;
-  }
-
-  // Dacă banul a expirat → reset
-  if (banUntil && now >= parseInt(banUntil, 10)) {
-    localStorage.removeItem(BAN_UNTIL_KEY);
-    localStorage.removeItem(VISITS_KEY);
-  }
-
-  // Contorizare accesări
-  let visits = parseInt(localStorage.getItem(VISITS_KEY) || "0", 10);
-  visits++;
-  localStorage.setItem(VISITS_KEY, visits);
-
-  // Peste 2 accesări → BAN 30 zile
-  if (visits > 2) {
-    const oneMonth = 30 * 24 * 60 * 60 * 1000; // 30 zile
-    localStorage.setItem(BAN_UNTIL_KEY, now + oneMonth);
-
-    document.body.innerHTML =
-      "<h1 style='text-align:center;margin-top:20vh;font-family:sans-serif'>You are banned!</h1>";
-  }
-})();
-</script>
 </body>
 </html>
+
 
 
 
