@@ -160,10 +160,13 @@ footer {
   <h2>Galerie Foto KNT BUZAU</h2>
 <div class="call-wrapper">
   <a href="tel:+40722921675"
-    gtag('event', 'conversion', {'send_to': 'AW-17995968331/osOzCMDTmYYcEMvekoVD'});
-     class="call-btn"
-     Apeleaza aici⬇️<br>☎️ 0722 921 675
-  </a>
+onclick="gtag('event','conversion',{
+  'send_to':'AW-17995968331/osOzCMDTmYYcEMvekoVD',
+  'event_callback': function(){ window.location='tel:+40722921675'; }
+}); return false;"
+class="call-btn">
+Apelează aici⬇️<br>☎️ 0722 921 675
+</a>
 </div>
 </section>
 
@@ -250,6 +253,7 @@ function closeLightbox() {
 <script src="/ban.js"></script>
 </body>
 </html>
+
 
 
 
