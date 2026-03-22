@@ -232,6 +232,51 @@ footer {
   color: #aaa;
 }
 footer a { color: #FF5C00; text-decoration: none; }
+    .mobile-call-full{
+  display:none;
+  position:fixed;
+  bottom:15px;
+  left:10px;
+  right:10px;
+  background:#a113e8;
+  color:#fff;
+  text-align:center;
+  font-size:1.6em;
+  font-weight:bold;
+  padding:16px 0;
+  z-index:999;
+  border-radius:30px;
+  text-decoration:none;
+  box-shadow:0 5px 20px rgba(0,0,0,0.35);
+
+  /* ANIMAȚIE */
+  animation:pulse 1.5s infinite, shake 3s infinite;
+}
+
+/* efect puls (respiră) */
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.06);}
+  100%{transform:scale(1);}
+}
+
+/* efect vibrație subtilă */
+@keyframes shake{
+  0%,100%{transform:translateX(0);}
+  25%{transform:translateX(-2px);}
+  50%{transform:translateX(2px);}
+  75%{transform:translateX(-2px);}
+}
+
+.mobile-call-full:hover{
+  background:#8b0fbf;
+}
+
+@media(max-width:768px){
+  .mobile-call-full{
+    display:block;
+  }
+}
 </style>
 </head>
 <body>
@@ -304,31 +349,9 @@ div class="floating-btn">
   <p>© 2025 Kountis Total Auto. Toate drepturile rezervate.</p>
 </footer>
 
-<!-- 🔊 Script care activează sunetul după prima interacțiune -->
-<script>
-  const audio = document.getElementById("bg-audio");
-
-  function enableAudio() {
-    if (!audio) return;
-    if (!audio.muted) return;
-
-    audio.muted = false;
-    audio.volume = 0.25; // volum 25%, să nu fie deranjant
-    audio.play().catch(() => {
-      // unele browsere pot bloca redarea automată
-    });
-  }
-
-  // Prima interacțiune oriunde în pagină
-  document.addEventListener("click", enableAudio, { once: true });
-
-  // Sigur pornim și când apasă pe numărul de telefon din hero (dacă există)
-  const phoneBtn = document.querySelector(".call-btn");
-  if (phoneBtn) {
-    phoneBtn.addEventListener("click", enableAudio);
-  }
-</script>
-<!-- 🔊 /SCRIPT -->
+<a href="tel:+40722921675" class="mobile-call-full">
+  📞 Apelează-ne acum!
+</a>
 <script src="/ban.js"></script>
 
 </body>
